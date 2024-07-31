@@ -1,0 +1,23 @@
+[package]
+name = "rss-monitor"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+libtranslate = { git = "https://github.com/ManyyWu/libtranslate-rust.git", tag = "v0.1.0" }
+tokio = { version = "1.39.2", features = ["full"] }
+reqwest = { version = "0.12.5" }
+thiserror = { version = "1.0.63" }
+
+[features]
+default = [ "features", "mail", "reddit", "schedule", "statistics", "discord_bot", "reporter", "alert", "daily_summary", "daily_statistics" ]
+features = []
+mail = [ "features" ]
+reddit = [ "features" ]
+schedule = [ "features" ]
+statistics = [ "features" ]
+discord_bot = [ "features" ]
+reporter = [ "mail", "schedule" ]
+alert = [ "mail", "reporter" ]
+daily_summary = [ "mail", "reporter" ]
+daily_statistics = [ "mail", "reporter", "statistics" ]
